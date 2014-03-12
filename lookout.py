@@ -15,6 +15,9 @@ PORT = 9890
 
 @app.route('/')
 def frontend():
+	total_cpu = psutil.cpu_percent
+	mem = psutil.virtual_memory()
+	print mem.available
 	return flask.send_from_directory(app.static_folder, 'index.html')
 
 @app.route('/raw')
